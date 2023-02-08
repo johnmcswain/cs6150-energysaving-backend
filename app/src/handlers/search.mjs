@@ -1,5 +1,5 @@
-const {responseWrapper} = require('../lib/lib.js')
-exports.handler = async (event) => {
+import {responseWrapper} from '../lib/lib.mjs'
+export async function handler(event){
   // LOGIC
   try {
     let term = event.queryStringParameters.term

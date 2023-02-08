@@ -1,6 +1,5 @@
-const {responseWrapper} = require('../lib/lib.js')
-exports.handler = async (event) => {
-  // LOGIC
+import {responseWrapper} from '../lib/lib.mjs'
+export async function handler(event){  // LOGIC
   try {
     //go fetch wordpress api endpoint data
     //go fetch other website energy program data (e.g., rss feeds, apis, etc.)

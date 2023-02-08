@@ -7,7 +7,7 @@ const internalError = {
   headers: HEADERS
 }
 
-function responseWrapper (data = null) {
+export function responseWrapper (data = null) {
   if (data) {
     if (data instanceof Error) {
       internalError.body = data.message
@@ -29,6 +29,4 @@ function responseWrapper (data = null) {
   }
 }
 
-module.exports = {
-  responseWrapper
-}
+
