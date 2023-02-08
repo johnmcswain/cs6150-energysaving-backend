@@ -1,0 +1,68 @@
+# This is the SAM template that represents the architecture of your serverless application
+# https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-template-basics.html
+
+# The AWSTemplateFormatVersion identifies the capabilities of the template
+# https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/format-version-structure.html
+AWSTemplateFormatVersion: 2010-09-09
+Description: >-
+  CS6150 Energy Saving Companion App Backend API
+
+
+Transform:
+- AWS::Serverless-2016-10-31
+Globals:
+  Function:
+    Runtime: nodejs18.x
+    MemorySize: 256
+    Timeout: 100
+Resources:
+  EnergySavingCompanionApi:
+    Type: AWS::Serverless::Api
+    Properties:
+      StageName: v1
+      Cors:
+        AllowMethods: "'GET,POST,HEAD,OPTIONS'"
+        AllowHeaders: "'Content-Type,X-Amz-Date,X-Api-Key'"
+        AllowOrigin: "'*'"
+  getProgramsFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: src/handlers/programs.handler
+      Description: Retrieves relevant Wordpress posts and aggregates any other energy program data feeds into a single, HTTP response
+      Events:
+        Api:
+          Type: Api
+          Properties:
+            RestApiId: !Ref EnergySavingCompanionApi
+            Path: /data/programs
+            Method: GET
+
+  getSearchResultsFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: src/handlers/search.handler
+      Description: Retrieves relevant Wordpress posts and aggregates any other energy program data feeds into a single, HTTP response
+      Events:
+        Api:
+          Type: Api
+          Properties:
+            RestApiId: !Ref EnergySavingCompanionApi
+            Path: /data/search
+            Method: GET
+  postSurveyResultsFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: src/handlers/survey.handler
+      Description: Returns JSON response of recommended energy saving programs and habits based on user input
+      Events:
+        Api:
+          Type: Api
+          Properties:
+            RestApiId: !Ref EnergySavingCompanionApi
+            Path: /data/survey
+            Method: POST
+
+Outputs:
+  WebEndpoint:
+    Description: "API Gateway endpoint URL for Energy Saving v1 API stage"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/v1/"

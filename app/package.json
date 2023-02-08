@@ -1,0 +1,28 @@
+{
+    "name": "energy-saving-companion-api",
+    "description": "CS6150 Energy Saving Companion App Backend API",
+    "version": "0.0.1",
+    "devDependencies": {
+        "jest": "^29.2.1",
+        "standard": "^17.0.0"
+    },
+    "scripts": {
+        "deploy:api": "sam build && sam deploy",
+        "local:api": "sam build && sam local start-api",
+        "lint": "standard",
+        "lint:fix": "standard --fix",
+        "test": "jest"
+    },
+    "jest": {
+        "testMatch": [
+            "**/__tests__/**/*.[jt]s?(x)",
+            "**/?(*.)+(spec|test).[jt]s?(x)",
+            "**/__tests__/**/*.mjs?(x)",
+            "**/?(*.)+(spec|test).mjs?(x)"
+        ],
+        "moduleFileExtensions": [
+            "mjs",
+            "js"
+        ]
+    }
+}
