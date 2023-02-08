@@ -1,0 +1,14 @@
+{
+    "body": {},
+    "resource": "/{proxy+}",
+    "path": "/data/programs",
+    "httpMethod": "POST",
+    "isBase64Encoded": true,
+    "queryStringParameters": {
+      "type":"rebates",
+      "term":"vehicles"
+    },
+    "pathParameters": {
+        "proxy": "/data/programs"
+    }
+}

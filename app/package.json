@@ -10,6 +10,9 @@
     "scripts": {
         "deploy:api": "sam build && sam deploy",
         "local:api": "sam build && sam local start-api",
+        "local:getProgramsFunction":"sam local invoke getProgramsFunction --event src/events/programs-get.json",
+        "local:getSearchResultsFunction":"sam local invoke getSearchResultsFunction --event src/events/search-get.json",
+        "local:postSurveyResultsFunction":"sam local invoke postSurveyResultsFunction --event src/events/survey-post.json",
         "lint": "standard",
         "lint:fix": "standard --fix",
         "test": "jest"

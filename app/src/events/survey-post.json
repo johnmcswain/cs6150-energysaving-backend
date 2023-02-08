@@ -1,0 +1,18 @@
+{
+    "body": {
+        "name": "John Doe"
+    },
+    "resource": "/{proxy+}",
+    "path": "/data/survey",
+    "httpMethod": "POST",
+    "isBase64Encoded": true,
+    "queryStringParameters": {
+      
+    },
+    "multiValueQueryStringParameters": {
+      
+    },
+    "pathParameters": {
+      "proxy": "/data/survey"
+    }
+  }

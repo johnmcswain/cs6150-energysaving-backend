@@ -1,0 +1,16 @@
+{
+    "body": {},
+    "resource": "/{proxy+}",
+    "path": "/data/search",
+    "httpMethod": "GET",
+    "isBase64Encoded": true,
+    "queryStringParameters": {
+      "term": "low-carbon"
+    },
+    "multiValueQueryStringParameters": {
+      
+    },
+    "pathParameters": {
+      "proxy": "/data/search"
+    }
+  }
